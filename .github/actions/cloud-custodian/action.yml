@@ -17,9 +17,12 @@ runs:
 
     - name: Install Cloud Custodian
       shell: bash
-      run: pip install cryptography==38.0.4 c7n c7n_azure
+      run: docker pull cloudcustodian/c7n
 
     - name: Run Cloud Custodian
       shell: bash
       run: |
-        custodian run -s . -v --dryrun ${{ inputs.configPath }}
+        docker run -it \
+          -v ${{ inputs.configPath }}:/home/custodian/policy.yml \
+          --env-file <(env | grep "^AWS\|^AZURE\|^GOOGLE") \
+            cloudcustodian/c7n run -v -s . /home/custodian/policy.yml
