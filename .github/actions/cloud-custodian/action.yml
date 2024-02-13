@@ -17,7 +17,7 @@ runs:
 
     - name: Install Cloud Custodian
       shell: bash
-      run: docker pull cloudcustodian/c7n
+      run: docker pull cloudcustodian/c7n:sha256-942969c9a474485800c4401b66ac993ddb23e7e3108f592ebb9a3403bc64a773.sig
 
     - name: Run Cloud Custodian
       shell: bash
