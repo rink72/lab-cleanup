@@ -4,8 +4,9 @@ policies:
       Removes lab resources from subscription
     resource: azure.armresource
     filters:
-      - type: value
-        key: tags.group
-        value: lab
+      - tag:group: present
+      # - type: value
+      #   key: tags.group
+      #   value: lab
     actions:
       - type: delete
