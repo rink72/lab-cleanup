@@ -2,7 +2,7 @@ policies:
   - name: remove-lab
     description: |
       Removes lab resources from subscription
-    resource: azure.resourcegroup
+    resource: azure.armresource
     filters:
       - type: value
         key: tags.group
