@@ -22,7 +22,7 @@ runs:
     - name: Run Cloud Custodian
       shell: bash
       run: |
-        docker run -it \
-          -v ${{ inputs.configPath }}:/home/custodian/policy.yml \
-          --env-file <(env | grep "^AWS\|^AZURE\|^GOOGLE") \
+        docker run -i 
+          -v ${{ inputs.configPath }}:/home/custodian/policy.yml
+          --env-file <(env | grep "^AWS\|^AZURE\|^GOOGLE")
             cloudcustodian/c7n run -v -s . /home/custodian/policy.yml
