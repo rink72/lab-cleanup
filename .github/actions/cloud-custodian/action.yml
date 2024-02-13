@@ -15,10 +15,14 @@ runs:
   using: composite
   steps:
 
+    - name: Install Cloud Custodian
+      shell: bash
+      run: |
+        pip install c7n c7n_azure
+        pip install -U pyopenssl
+
+
     - name: Run Cloud Custodian
       shell: bash
       run: |
-        docker run -i \
-          -v ${{ inputs.configPath }}:/home/custodian/policy.yml \
-          --env-file <(env | grep "^AWS\|^AZURE\|^GOOGLE") \
-            cloudcustodian/c7n:dev run -v -s . --dryrun /home/custodian/policy.yml
+        custodian run -s . -v --dryrun ${{ inputs.configPath }}
