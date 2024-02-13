@@ -22,4 +22,4 @@ runs:
     - name: Run Cloud Custodian
       shell: bash
       run: |
-        custodian
+        custodian run -s . -v --dryrun ${{ inputs.configPath }}

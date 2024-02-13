@@ -1,0 +1,11 @@
+policies:
+  - name: remove-lab
+    description: |
+      Removes lab resources from subscription
+    resource: azure.resourcegroup
+    filters:
+      - type: value
+        key: tags.group
+        value: lab
+    actions:
+      - type: delete
