@@ -19,7 +19,7 @@ permissions:
   contents: read
 
 env:
-  azureLabCleanupPath: config/azure-lab.yml
+  azureLabCleanupPath: ${{ github.workspace }}/config/azure-lab.yml
   previewMode: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.preview || false }}
 
 jobs:
