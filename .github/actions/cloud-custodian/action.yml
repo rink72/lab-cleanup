@@ -25,4 +25,8 @@ runs:
     - name: Run Cloud Custodian
       shell: bash
       run: |
-        custodian run -s . -v --dryrun ${{ inputs.configPath }}
+        DRYRUN_FLAG=""
+        if [ "${{ inputs.preview }}" = "true" ]; then
+          DRYRUN_FLAG="--dryrun"
+        fi
+        custodian run -s . $DRYRUN_FLAG ${{ inputs.configPath }}
