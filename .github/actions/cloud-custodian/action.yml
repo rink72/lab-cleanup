@@ -17,7 +17,7 @@ runs:
 
     - name: Install Cloud Custodian
       shell: bash
-      run: pip install c7n_azure
+      run: pip install pyopenssl c7n c7n_azure
 
     - name: Run Cloud Custodian
       shell: bash
