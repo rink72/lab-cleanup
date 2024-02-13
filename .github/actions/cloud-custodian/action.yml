@@ -14,7 +14,11 @@ inputs:
 runs:
   using: composite
   steps:
-    - name: Display parameters
+
+    - name: Install Cloud Custodian
+      run: pip install c7n c7n_azure
+
+    - name: Run Cloud Custodian
       shell: bash
       run: |
-        echo ${{ inputs.configPath }}
+        custodian

@@ -7,9 +7,12 @@ on:
   workflow_dispatch:
     inputs:
       preview:
-        description: 'Preview mode'
+        description: Preview changes
+        type: choice
         required: true
-        default: 'false'
+        options:
+          - false
+          - true
 
 permissions:
   id-token: write
